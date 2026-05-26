@@ -30,16 +30,16 @@ export default function Login() {
     }
   };
 
-  const inputCls = "w-full bg-gaming-card border border-white/[0.07] rounded-xl px-4 py-3 text-slate-100 text-sm outline-none transition-colors focus:border-brand-purple/60 placeholder:text-slate-600";
+  const inputCls = "w-full bg-[#0f0f1a] border border-white/[0.07] rounded-xl px-4 py-3 text-slate-100 text-sm outline-none transition-colors focus:border-[rgba(255,85,0,0.4)]/60 placeholder:text-slate-600";
 
   return (
-    <div className="min-h-screen grid grid-cols-2 bg-gaming-dark">
+    <div className="min-h-screen grid grid-cols-2 bg-[#05050a]">
 
       {/* Left — branding */}
-      <div className="relative flex flex-col items-center justify-center p-12 bg-gaming-darker overflow-hidden"
+      <div className="relative flex flex-col items-center justify-center p-12 bg-[#05050a]er overflow-hidden"
         style={{background:'linear-gradient(135deg,rgba(124,58,237,.2),rgba(6,182,212,.1)),#0d0d1a'}}>
         {/* Glow blobs */}
-        <div className="absolute -top-20 -left-20 w-72 h-72 rounded-full bg-brand-purple/15 blur-3xl pointer-events-none"/>
+        <div className="absolute -top-20 -left-20 w-72 h-72 rounded-full bg-brand-orange/15 blur-3xl pointer-events-none"/>
         <div className="absolute -bottom-20 -right-20 w-60 h-60 rounded-full bg-brand-cyan/10 blur-3xl pointer-events-none"/>
 
         <div className="relative text-center">
@@ -67,7 +67,7 @@ export default function Login() {
           </p>
 
           {/* Tab switcher */}
-          <div className="flex bg-gaming-card border border-white/[0.07] rounded-xl p-1 mb-6">
+          <div className="flex bg-[#0f0f1a] border border-white/[0.07] rounded-xl p-1 mb-6">
             {['login','signup'].map(t=>(
               <button key={t} onClick={()=>setTab(t)}
                 className={`flex-1 py-2 rounded-lg text-sm font-semibold transition-all border-0 cursor-pointer ${
@@ -110,7 +110,7 @@ export default function Login() {
           <p className="text-center mt-5 text-sm text-slate-600">
             {tab==='login'?"Don't have an account? ":"Already have an account? "}
             <button onClick={()=>setTab(tab==='login'?'signup':'login')}
-              className="text-brand-purple-lt font-semibold bg-transparent border-0 cursor-pointer hover:underline">
+              className="text-brand-orange-lt font-semibold bg-transparent border-0 cursor-pointer hover:underline">
               {tab==='login'?'Sign Up':'Sign In'}
             </button>
           </p>

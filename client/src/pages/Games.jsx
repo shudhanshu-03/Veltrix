@@ -59,7 +59,7 @@ export default function Games() {
         <div className="grid gap-8" style={{ gridTemplateColumns:'260px 1fr' }}>
 
           {/* ── Sidebar ────────────────────────────── */}
-          <aside className="bg-gaming-card border border-white/[0.07] rounded-xl p-6 self-start sticky top-20">
+          <aside className="border rounded-xl p-6 self-start sticky top-20" style={{ background: 'var(--card)', borderColor: 'var(--border)', borderRadius: 'var(--r-lg)' }}>
             <div className="flex items-center justify-between font-orbitron text-sm mb-6">
               Filters
               <button onClick={() => { setGenres([]); setPrice('all'); setQuery(''); setPage(1); }}
@@ -73,7 +73,7 @@ export default function Games() {
                 {GENRES.map(g => (
                   <label key={g.id} className="flex items-center gap-2.5 cursor-pointer px-2 py-1.5 rounded-lg hover:bg-white/[0.04] transition-colors">
                     <input type="checkbox" checked={genres.includes(g.name)} onChange={()=>toggleGenre(g.name)}
-                      className="accent-brand-purple w-4 h-4 cursor-pointer"/>
+                      className="w-4 h-4 cursor-pointer" style={{ accentColor: 'var(--orange)' }}/>
                     <span className={`text-sm ${genres.includes(g.name)?'text-slate-100':'text-slate-400'}`}>{g.icon} {g.name}</span>
                   </label>
                 ))}
@@ -86,7 +86,7 @@ export default function Games() {
               {[['all','All'],['free','Free to Play'],['paid','Paid']].map(([val,label])=>(
                 <label key={val} className="flex items-center gap-2.5 cursor-pointer px-2 py-1.5 mb-0.5">
                   <input type="radio" name="price" checked={priceType===val} onChange={()=>{setPrice(val);setPage(1);}}
-                    className="accent-brand-purple cursor-pointer"/>
+                    className="cursor-pointer" style={{ accentColor: 'var(--orange)' }}/>
                   <span className="text-sm text-slate-400">{label}</span>
                 </label>
               ))}
@@ -107,14 +107,14 @@ export default function Games() {
           <div>
             {/* Toolbar */}
             <div className="flex items-center gap-3 mb-5 flex-wrap">
-              <div className="flex-1 min-w-48 flex items-center gap-2 bg-gaming-card border border-white/[0.07] rounded-xl px-4 py-3 focus-within:border-brand-purple/50 transition-colors">
+              <div className="flex-1 min-w-48 flex items-center gap-2 border rounded-xl px-4 py-3 transition-colors" style={{ background: 'var(--card)', borderColor: 'var(--border)', borderRadius: 'var(--r-md)' }}>
                 <span className="text-slate-600">🔍</span>
                 <input type="text" value={query} onChange={e=>{setQuery(e.target.value);setPage(1);}}
                   placeholder="Search games, developers..."
                   className="bg-transparent border-0 outline-none text-slate-100 text-sm w-full placeholder:text-slate-600"/>
               </div>
               <select value={sort} onChange={e=>{setSort(e.target.value);setPage(1);}}
-                className="bg-gaming-card border border-white/[0.07] rounded-xl px-4 py-3 text-slate-100 text-sm outline-none cursor-pointer">
+                className="border rounded-xl px-4 py-3 text-slate-100 text-sm outline-none cursor-pointer" style={{ background: 'var(--card)', borderColor: 'var(--border)', borderRadius: 'var(--r-md)' }}>
                 {SORT_OPTIONS.map(o=><option key={o.value} value={o.value}>{o.label}</option>)}
               </select>
               <span className="text-sm text-slate-600 whitespace-nowrap">{loading?'…':`${total} games`}</span>
@@ -154,19 +154,19 @@ export default function Games() {
             {totalPages>1 && (
               <div className="flex items-center justify-center gap-2 mt-12">
                 <button onClick={()=>setPage(p=>Math.max(1,p-1))} disabled={page===1}
-                  className="w-10 h-10 flex items-center justify-center rounded-lg bg-gaming-card border border-white/[0.07] text-slate-400 cursor-pointer hover:border-brand-purple/50 transition-colors disabled:opacity-40">‹</button>
+                  className="w-10 h-10 flex items-center justify-center rounded-lg border text-slate-400 cursor-pointer transition-colors disabled:opacity-40" style={{ background: 'var(--card)', borderColor: 'var(--border)' }}>‹</button>
                 {Array.from({length:Math.min(5,totalPages)},(_,i)=>{
                   const p=Math.max(1,Math.min(totalPages-4,page-2))+i;
                   return (
                     <button key={p} onClick={()=>setPage(p)}
                       className={`w-10 h-10 flex items-center justify-center rounded-lg border text-sm cursor-pointer transition-all font-medium ${
-                        p===page?'border-transparent text-white':'bg-gaming-card border-white/[0.07] text-slate-400 hover:border-brand-purple/50'
+                        p===page?'border-transparent text-white':'border-white/[0.07] text-slate-400 hover:border-[var(--border-o)]'
                       }`}
-                      style={p===page?{background:'linear-gradient(135deg,#7c3aed,#06b6d4)'}:{}}>{p}</button>
+                      style={p===page?{background:'var(--grad)'}:{background:'var(--card)', borderColor:'var(--border)'}}>{p}</button>
                   );
                 })}
                 <button onClick={()=>setPage(p=>Math.min(totalPages,p+1))} disabled={page===totalPages}
-                  className="w-10 h-10 flex items-center justify-center rounded-lg bg-gaming-card border border-white/[0.07] text-slate-400 cursor-pointer hover:border-brand-purple/50 transition-colors disabled:opacity-40">›</button>
+                  className="w-10 h-10 flex items-center justify-center rounded-lg border text-slate-400 cursor-pointer transition-colors disabled:opacity-40" style={{ background: 'var(--card)', borderColor: 'var(--border)' }}>›</button>
               </div>
             )}
           </div>

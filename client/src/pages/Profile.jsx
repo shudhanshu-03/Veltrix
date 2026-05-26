@@ -105,7 +105,7 @@ const AccountTab = memo(({ user }) => {
               <p className="text-xs text-slate-500 uppercase tracking-widest mb-1">Security & Privacy</p>
               <p className="text-sm text-slate-400">Two-factor authentication is currently disabled.</p>
             </div>
-            <button className="btn btn-outline btn-sm text-brand-cyan border-brand-cyan/20 font-orbitron text-[10px] tracking-widest uppercase">Enable 2FA</button>
+            <button className="btn btn-outline btn-sm text-[#ff8c42] border-brand-cyan/20 font-orbitron text-[10px] tracking-widest uppercase">Enable 2FA</button>
           </div>
 
           <div className="pt-4 border-t border-white/5">
@@ -183,18 +183,18 @@ export default function Profile() {
   };
 
   if(!user) return (
-    <div className="min-h-screen bg-gaming-dark flex items-center justify-center">
+    <div className="min-h-screen bg-[#05050a] flex items-center justify-center">
       <div className="animate-spin w-8 h-8 rounded-full border-t-2 border-brand-cyan"></div>
     </div>
   );
 
   return (
-    <div className="min-h-screen bg-gaming-dark text-slate-100 pb-20">
+    <div className="min-h-screen bg-[#05050a] text-slate-100 pb-20">
       {/* Hero Section */}
       <div className="relative pt-32 pb-16 overflow-hidden">
         {/* Cinematic Background Elements */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-brand-purple/10 blur-[120px] rounded-full opacity-50" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-brand-orange/10 blur-[120px] rounded-full opacity-50" />
           <div className="absolute top-40 left-[40%] w-[400px] h-[400px] bg-brand-cyan/5 blur-[100px] rounded-full opacity-30" />
         </div>
 
@@ -211,7 +211,7 @@ export default function Profile() {
                   {user.avatar ? (
                     <img src={user.avatar} alt={user.name} className="w-full h-full object-cover" />
                   ) : (
-                    <div className="bg-gaming-dark w-full h-full flex items-center justify-center">
+                    <div className="bg-[#05050a] w-full h-full flex items-center justify-center">
                       <span className="font-orbitron text-4xl md:text-5xl font-black gradient-text">
                         {user.name.split(' ').map(n => n[0]).join('')}
                       </span>
@@ -219,7 +219,7 @@ export default function Profile() {
                   )}
                 </div>
               </div>
-              <button className="absolute bottom-1 right-1 p-2 bg-brand-purple rounded-full border-2 border-gaming-dark text-white hover:scale-110 transition-transform">
+              <button className="absolute bottom-1 right-1 p-2 bg-brand-orange rounded-full border-2 border-[#05050a] text-white hover:scale-110 transition-transform">
                 <Edit2 size={16} />
               </button>
             </div>
@@ -234,7 +234,7 @@ export default function Profile() {
                   <span className="badge badge-purple px-3 py-1 flex items-center gap-1.5">
                     <Shield size={12} /> PRO MEMBER
                   </span>
-                  <span className="badge bg-brand-cyan/15 text-brand-cyan border border-brand-cyan/20 px-3 py-1 flex items-center gap-1.5">
+                  <span className="badge bg-brand-cyan/15 text-[#ff8c42] border border-brand-cyan/20 px-3 py-1 flex items-center gap-1.5">
                     <Cpu size={12} /> LVL {user.level}
                   </span>
                 </div>
@@ -242,11 +242,11 @@ export default function Profile() {
               
               <div className="flex flex-wrap gap-6 justify-center md:justify-start text-slate-400 text-sm">
                 <div className="flex items-center gap-2">
-                  <Mail size={16} className="text-brand-purple" />
+                  <Mail size={16} className="text-brand-orange" />
                   {user.email}
                 </div>
                 <div className="flex items-center gap-2">
-                  <Calendar size={16} className="text-brand-cyan" />
+                  <Calendar size={16} className="text-[#ff8c42]" />
                   Joined {user.joined}
                 </div>
               </div>
@@ -255,7 +255,7 @@ export default function Profile() {
               <div className="mt-8 max-w-md">
                 <div className="flex justify-between text-xs font-orbitron mb-2">
                   <span className="text-slate-500 uppercase tracking-widest">Global Rank Progress</span>
-                  <span className="text-brand-cyan">{user.xp}%</span>
+                  <span className="text-[#ff8c42]">{user.xp}%</span>
                 </div>
                 <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
                   <motion.div 

@@ -11,7 +11,7 @@ export function SkeletonGrid({ count = 8 }) {
   return (
     <div className="grid-games">
       {Array.from({ length: count }).map((_, i) => (
-        <div key={i} className="bg-gaming-card border border-white/[0.07] rounded-xl overflow-hidden">
+        <div key={i} className="bg-[#0f0f1a] border border-white/[0.07] rounded-xl overflow-hidden">
           <div className="skeleton h-44 w-full" />
           <div className="p-4 space-y-2">
             <div className="skeleton h-3.5 w-full rounded" />
@@ -26,7 +26,7 @@ export function SkeletonGrid({ count = 8 }) {
 
 export function SkeletonCard() {
   return (
-    <div className="bg-gaming-card border border-white/[0.07] rounded-xl overflow-hidden">
+    <div className="bg-[#0f0f1a] border border-white/[0.07] rounded-xl overflow-hidden">
       <div className="skeleton h-44 w-full" />
       <div className="p-4 space-y-2">
         <div className="skeleton h-3.5 w-full rounded" />

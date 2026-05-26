@@ -39,8 +39,8 @@ function parseRequirements(htmlStr) {
 function SysReqBlock({ label, items }) {
   if (!items || items.length === 0) return null;
   return (
-    <div className="bg-gaming-card border border-white/[0.07] rounded-xl p-5">
-      <h4 className="font-orbitron text-xs text-brand-cyan mb-4">{label}</h4>
+    <div className="bg-[#0f0f1a] border border-white/[0.07] rounded-xl p-5">
+      <h4 className="font-orbitron text-xs text-[#ff8c42] mb-4">{label}</h4>
       <div className="text-xs text-slate-400 space-y-2.5">
         {items.map(({ label: l, value: v }, i) => (
           <div key={i} className="flex gap-2">
@@ -104,7 +104,7 @@ export default function GameDetail() {
     <div className="text-center py-32 text-slate-400">
       <div className="text-5xl mb-4">🎮</div>
       <h3 className="text-xl font-semibold mb-2">Game not found</h3>
-      <Link to="/games" className="text-brand-cyan hover:underline">← Browse all games</Link>
+      <Link to="/games" className="text-[#ff8c42] hover:underline">← Browse all games</Link>
     </div>
   );
 
@@ -185,20 +185,20 @@ export default function GameDetail() {
           {/* Main content */}
           <div>
             {/* About */}
-            <h3 className="font-orbitron text-sm text-brand-cyan uppercase tracking-widest mb-3">About This Game</h3>
+            <h3 className="font-orbitron text-sm text-[#ff8c42] uppercase tracking-widest mb-3">About This Game</h3>
             <p className="text-slate-400 leading-relaxed mb-8 text-sm">{description}</p>
 
             {/* Steam Screenshots */}
             {screenshots.length > 0 && (
               <>
-                <h3 className="font-orbitron text-sm text-brand-cyan uppercase tracking-widest mb-4">Screenshots</h3>
+                <h3 className="font-orbitron text-sm text-[#ff8c42] uppercase tracking-widest mb-4">Screenshots</h3>
                 <div className="grid grid-cols-2 gap-3 mb-10">
                   {screenshots.map((ss, i) => (
                     <a key={i} href={ss.path_full} target="_blank" rel="noopener">
                       <img
                         src={ss.path_thumbnail}
                         alt={`${game.title} screenshot ${i + 1}`}
-                        className="w-full rounded-lg border border-white/[0.07] hover:border-brand-purple/50 transition-colors object-cover h-36"
+                        className="w-full rounded-lg border border-white/[0.07] hover:border-[rgba(255,85,0,0.4)]/50 transition-colors object-cover h-36"
                       />
                     </a>
                   ))}
@@ -207,14 +207,14 @@ export default function GameDetail() {
             )}
 
             {/* System Requirements */}
-            <h3 className="font-orbitron text-sm text-brand-cyan uppercase tracking-widest mb-4">System Requirements</h3>
+            <h3 className="font-orbitron text-sm text-[#ff8c42] uppercase tracking-widest mb-4">System Requirements</h3>
             {hasReqs ? (
               <div className="grid grid-cols-2 gap-4 mb-10">
                 <SysReqBlock label="⚡ MINIMUM" items={minReq} />
                 <SysReqBlock label="🚀 RECOMMENDED" items={recReq} />
               </div>
             ) : (
-              <div className="bg-gaming-card border border-white/[0.07] rounded-xl p-5 mb-10 text-sm text-slate-500">
+              <div className="bg-[#0f0f1a] border border-white/[0.07] rounded-xl p-5 mb-10 text-sm text-slate-500">
                 {steamData === null
                   ? 'Loading system requirements…'
                   : 'System requirements not available for this title.'}
@@ -224,7 +224,7 @@ export default function GameDetail() {
             {/* Related games */}
             {related.length > 0 && (
               <>
-                <h3 className="font-orbitron text-sm text-brand-cyan uppercase tracking-widest mb-4">More Like This</h3>
+                <h3 className="font-orbitron text-sm text-[#ff8c42] uppercase tracking-widest mb-4">More Like This</h3>
                 <div className="grid-games">
                   {related.map(g => <GameCard key={g.id} game={g} />)}
                 </div>
@@ -235,7 +235,7 @@ export default function GameDetail() {
           {/* Sidebar */}
           <div className="space-y-4">
             {/* Game info */}
-            <div className="bg-gaming-card border border-white/[0.07] rounded-xl p-5">
+            <div className="bg-[#0f0f1a] border border-white/[0.07] rounded-xl p-5">
               <h4 className="font-orbitron text-xs text-slate-600 uppercase tracking-widest mb-4">Game Info</h4>
               {[
                 ['Developer', game.developer],
@@ -253,23 +253,23 @@ export default function GameDetail() {
             </div>
 
             {/* Buy links */}
-            <div className="bg-gaming-card border border-white/[0.07] rounded-xl p-5">
+            <div className="bg-[#0f0f1a] border border-white/[0.07] rounded-xl p-5">
               <h4 className="font-orbitron text-xs text-slate-600 uppercase tracking-widest mb-4">Where to Buy</h4>
               {game.steam && (
                 <a href={game.steam} target="_blank" rel="noopener"
-                  className="flex items-center gap-3 px-4 py-3 bg-white/[0.04] border border-white/[0.07] rounded-xl text-slate-100 hover:bg-brand-purple/15 hover:border-brand-purple/50 transition-all mb-3 text-sm font-medium no-underline">
+                  className="flex items-center gap-3 px-4 py-3 bg-white/[0.04] border border-white/[0.07] rounded-xl text-slate-100 hover:bg-brand-orange/15 hover:border-[rgba(255,85,0,0.4)]/50 transition-all mb-3 text-sm font-medium no-underline">
                   🎮 View on Steam
                 </a>
               )}
               <a href={`https://www.epicgames.com/store/en-US/browse?q=${encodeURIComponent(game.title)}`} target="_blank" rel="noopener"
-                className="flex items-center gap-3 px-4 py-3 bg-white/[0.04] border border-white/[0.07] rounded-xl text-slate-100 hover:bg-brand-purple/15 hover:border-brand-purple/50 transition-all text-sm font-medium no-underline">
+                className="flex items-center gap-3 px-4 py-3 bg-white/[0.04] border border-white/[0.07] rounded-xl text-slate-100 hover:bg-brand-orange/15 hover:border-[rgba(255,85,0,0.4)]/50 transition-all text-sm font-medium no-underline">
                 🛒 Epic Games Store
               </a>
             </div>
 
             {/* Steam reviews */}
             {reviews && (
-              <div className="bg-gaming-card border border-white/[0.07] rounded-xl p-5">
+              <div className="bg-[#0f0f1a] border border-white/[0.07] rounded-xl p-5">
                 <h4 className="font-orbitron text-xs text-slate-600 uppercase tracking-widest mb-4">Steam Reviews</h4>
                 <div className={`font-bold text-base mb-1 ${revColor}`}>{reviews.review_score_desc}</div>
                 {pct && <div className="text-xs text-slate-600 mb-3">{pct}% positive · {(reviews.total_reviews || 0).toLocaleString()} reviews</div>}
@@ -294,11 +294,11 @@ export default function GameDetail() {
       {/* Steam News */}
       {news.length > 0 && (
         <div className="max-w-[1280px] mx-auto px-6 pb-12">
-          <h3 className="font-orbitron text-sm text-brand-cyan uppercase tracking-widest mb-5">📰 Latest Steam News</h3>
+          <h3 className="font-orbitron text-sm text-[#ff8c42] uppercase tracking-widest mb-5">📰 Latest Steam News</h3>
           <div className="grid grid-cols-2 gap-4">
             {news.map((item, i) => (
               <a key={i} href={item.url} target="_blank" rel="noopener"
-                className="block bg-gaming-card border border-white/[0.07] rounded-xl p-4 hover:border-brand-purple/50 transition-colors no-underline">
+                className="block bg-[#0f0f1a] border border-white/[0.07] rounded-xl p-4 hover:border-[rgba(255,85,0,0.4)]/50 transition-colors no-underline">
                 <div className="text-sm font-semibold text-slate-100 mb-2 line-clamp-2">{item.title}</div>
                 <div className="text-xs text-slate-600">{new Date(item.date * 1000).toLocaleDateString()} · {item.feedlabel}</div>
               </a>

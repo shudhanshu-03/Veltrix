@@ -14,7 +14,7 @@ export default memo(function GameCard({ game }) {
       className="group h-full"
     >
       <Link to={`/game/${game.id}`}
-        className="game-card flex flex-col h-full w-full glass-panel overflow-hidden border border-white/[0.08] hover:border-[#00E5FF]/40 hover:shadow-[0_0_30px_rgba(0,229,255,0.2)] transition-all duration-500 no-underline bg-[#111827]"
+        className="game-card flex flex-col h-full w-full overflow-hidden border border-[var(--border)] hover:border-[var(--border-o)] hover:shadow-[0_0_30px_rgba(255,85,0,0.2)] transition-all duration-500 no-underline rounded-[var(--r-lg)]" style={{ background: 'var(--card)' }}
       >
         <div className="relative flex-1 min-h-[12rem] overflow-hidden bg-slate-900/50">
           {hasImage ? (
@@ -25,7 +25,7 @@ export default memo(function GameCard({ game }) {
                 onError={() => setImgError(true)}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-out brightness-[1.02] contrast-[1.05] crisp-image"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-gaming-dark via-gaming-dark/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500" />
+              <div className="absolute inset-0 opacity-80 group-hover:opacity-60 transition-opacity duration-500" style={{ background: 'linear-gradient(to top, #05050a, rgba(5,5,10,0.2), transparent)' }} />
             </>
           ) : (
             <div className="h-full relative flex flex-col justify-between p-4" style={{ background: game.gradient }}>
@@ -38,7 +38,7 @@ export default memo(function GameCard({ game }) {
 
           {/* Badges */}
           <div className="absolute top-4 left-4 z-10 flex flex-col gap-2">
-            <span className="badge badge-purple backdrop-blur-md bg-brand-purple/30 border-brand-purple/40 text-[10px] px-2.5">
+            <span className="badge badge-orange backdrop-blur-md text-[10px] px-2.5">
               {game.genre}
             </span>
           </div>
@@ -50,12 +50,12 @@ export default memo(function GameCard({ game }) {
           </div>
 
           {/* Hover Overlay */}
-          <div className="absolute inset-0 bg-brand-purple/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ background: 'rgba(255,85,0,0.08)' }} />
         </div>
 
         {/* Info Area */}
         <div className="p-5 flex flex-col gap-2">
-          <h3 className="font-orbitron text-[15px] font-black leading-tight text-white group-hover:text-brand-cyan transition-colors line-clamp-1">
+          <h3 className="text-[1rem] font-bold leading-tight text-white group-hover:text-[var(--orange-light)] transition-colors line-clamp-1" style={{ fontFamily: "'Rajdhani', sans-serif", letterSpacing: '0.03em' }}>
             {game.title}
           </h3>
           
@@ -77,12 +77,12 @@ export default memo(function GameCard({ game }) {
         </div>
 
         {/* Action Footer */}
-        <div className="px-5 py-4 bg-white/[0.02] border-t border-white/[0.05] flex items-center justify-between group-hover:bg-brand-purple/5 transition-colors">
-          <span className={`text-sm font-black font-orbitron ${game.priceType === 'Free' ? 'text-brand-cyan' : 'text-white'}`}>
+        <div className="px-5 py-4 border-t flex items-center justify-between transition-colors" style={{ background: 'rgba(255,255,255,0.02)', borderColor: 'var(--border)' }}>
+          <span className={`text-sm font-bold ${game.priceType === 'Free' ? 'text-green-400' : 'text-white'}`} style={{ fontFamily: "'Rajdhani', sans-serif" }}>
             {game.priceType === 'Free' ? 'FREE' : game.price}
           </span>
-          <div className="flex items-center gap-1 text-[11px] font-black font-orbitron text-brand-purple group-hover:text-brand-cyan transition-colors uppercase tracking-widest">
-            NEXUS <ArrowUpRight size={14} />
+          <div className="flex items-center gap-1 text-[11px] font-bold transition-colors uppercase tracking-widest" style={{ color: 'var(--orange-light)', fontFamily: "'Rajdhani', sans-serif" }}>
+            View <ArrowUpRight size={14} />
           </div>
         </div>
       </Link>
