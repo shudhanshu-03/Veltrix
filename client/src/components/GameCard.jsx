@@ -20,7 +20,7 @@ export default memo(function GameCard({ game }) {
           {hasImage ? (
             <>
               <img
-                src={`https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${game.steamAppId}/capsule_616x353.jpg`}
+                src={game.steamAppId ? `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${game.steamAppId}/capsule_616x353.jpg` : (game.headerImage || game.image)}
                 alt={game.title}
                 onError={() => setImgError(true)}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-out brightness-[1.02] contrast-[1.05] crisp-image"
@@ -39,7 +39,7 @@ export default memo(function GameCard({ game }) {
           {/* Badges */}
           <div className="absolute top-4 left-4 z-10 flex flex-col gap-2">
             <span className="badge badge-orange backdrop-blur-md text-[10px] px-2.5">
-              {game.genre}
+              {game.genre !== 'undefined' && game.genre !== 'UNDEFINED' ? game.genre : 'Game'}
             </span>
           </div>
           
@@ -60,7 +60,9 @@ export default memo(function GameCard({ game }) {
           </h3>
           
           <div className="flex items-center justify-between">
-            <p className="text-[11px] text-slate-500 font-bold uppercase tracking-wider">{game.developer}</p>
+            <p className="text-[11px] text-slate-500 font-bold uppercase tracking-wider">
+              {game.developer !== 'undefined' && game.developer !== 'UNDEFINED' ? game.developer : 'Unknown Developer'}
+            </p>
             <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/20">
               <Star size={10} className="text-amber-500 fill-amber-500" />
               <span className="text-[11px] font-bold text-amber-500">{game.rating.toFixed(1)}</span>

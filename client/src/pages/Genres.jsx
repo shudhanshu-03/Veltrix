@@ -33,7 +33,7 @@ export default function Genres() {
       {/* Genre grid — compact */}
       <section style={{ padding: '2rem 0 5rem', background: 'var(--bg)' }}>
         <div className="max-w-[1200px] mx-auto px-6">
-          <div className="grid gap-4" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))' }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {GENRES.map((g, i) => (
               <motion.div
                 key={g.id}

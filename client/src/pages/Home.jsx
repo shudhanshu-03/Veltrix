@@ -83,8 +83,8 @@ const SteamSlider = ({ games }) => {
   if (!featured.length) return null;
   const game = featured[idx];
   const steamId = game.steamAppId;
-  const banner = steamId ? `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${steamId}/library_hero.jpg` : '';
-  const screenshots = steamId ? [0, 1, 2, 3].map(i => `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${steamId}/ss_${i}.jpg`) : [];
+  const banner = steamId ? `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${steamId}/library_hero.jpg` : (game.headerImage || game.image);
+  const caps = steamId ? `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${steamId}/capsule_616x353.jpg` : (game.headerImage || game.image);
   const price = prices[game.id];
 
   return (
@@ -96,7 +96,7 @@ const SteamSlider = ({ games }) => {
         onMouseOut={e => e.currentTarget.style.boxShadow = 'none'}
       >
         {/* Banner */}
-        <div style={{ position: 'relative', backgroundImage: `url(${banner}), url(https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${steamId}/capsule_616x353.jpg)`, backgroundSize: 'cover', backgroundPosition: 'center', transition: 'all 0.4s ease-in-out' }}>
+        <div style={{ position: 'relative', backgroundImage: `url(${banner}), url(${caps})`, backgroundSize: 'cover', backgroundPosition: 'center', transition: 'all 0.4s ease-in-out' }}>
           <span style={{ position: 'absolute', top: '1rem', left: '1rem', background: 'rgba(11,18,25,0.85)', backdropFilter: 'blur(8px)', color: 'var(--orange-light)', fontSize: '0.7rem', fontWeight: 700, padding: '4px 12px', borderRadius: 4, letterSpacing: '0.12em', border: '1px solid rgba(255,85,0,0.35)', textTransform: 'uppercase' }}>FEATURED</span>
         </div>
 
@@ -107,14 +107,17 @@ const SteamSlider = ({ games }) => {
             
             {/* Screenshot Grid */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, marginBottom: '1.25rem' }}>
-              {[0,1,2,3].map(i => (
-                <div key={i} style={{
-                  backgroundImage: `url(https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${steamId}/ss_${['1','2','3','4'][i]}.600x338.jpg)`,
-                  backgroundSize: 'cover', backgroundPosition: 'center', borderRadius: 3,
-                  backgroundColor: '#0b1219', boxShadow: '0 4px 8px rgba(0,0,0,0.3)',
-                  aspectRatio: '16/10', opacity: 0.85, transition: '0.3s',
-                }} onMouseOver={e => e.target.style.opacity = 1} onMouseOut={e => e.target.style.opacity = 0.85} />
-              ))}
+              {[0,1,2,3].map(i => {
+                const ssUrl = steamId ? `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${steamId}/ss_${['1','2','3','4'][i]}.600x338.jpg` : (game.headerImage || game.image);
+                return (
+                  <div key={i} style={{
+                    backgroundImage: `url(${ssUrl})`,
+                    backgroundSize: 'cover', backgroundPosition: 'center', borderRadius: 3,
+                    backgroundColor: '#0b1219', boxShadow: '0 4px 8px rgba(0,0,0,0.3)',
+                    aspectRatio: '16/10', opacity: 0.85, transition: '0.3s',
+                  }} onMouseOver={e => e.target.style.opacity = 1} onMouseOut={e => e.target.style.opacity = 0.85} />
+                );
+              })}
             </div>
           </div>
           <div>
@@ -169,10 +172,12 @@ const SteamSlider = ({ games }) => {
 
 export default function Home() {
   const [games, setGames] = useState([]);
+  const [totalGames, setTotalGames] = useState(0);
 
   useEffect(() => {
     getGames({ limit: 100, sort: 'rating' }).then(res => {
       setGames(res?.data || []);
+      setTotalGames(res?.total || res?.data?.length || 0);
     }).catch(() => {});
   }, []);
 
@@ -222,7 +227,7 @@ export default function Home() {
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.3, duration: 0.8 }}
             className="flex gap-12 justify-center pt-10" style={{ borderTop: '1px solid rgba(255,85,0,0.15)' }}>
-            <AnimatedStat target={50000} label="Games Listed" suffix="+" />
+            <AnimatedStat target={totalGames} label="Games Listed" suffix="+" />
             <AnimatedStat target={12} label="Genres" />
             <AnimatedStat target={100} label="PC Focused" suffix="%" />
           </motion.div>

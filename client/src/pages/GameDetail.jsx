@@ -127,13 +127,13 @@ export default function GameDetail() {
     <div>
       {/* Hero banner */}
       <div className="detail-hero relative flex items-end pb-12 min-h-[55vh]"
-        style={{ marginTop: 'var(--nav-h)', background: game.gradient }}>
+        style={{ marginTop: 'var(--nav-h)', backgroundColor: '#05050a' }}>
         {/* Hero background: use Steam header image if available */}
         {(game.headerImage || steamData?.header_image) && (
           <img
             src={steamData?.header_image || game.headerImage}
             alt={game.title}
-            className="absolute inset-0 w-full h-full object-cover opacity-30"
+            className="absolute inset-0 w-full h-full object-cover opacity-60"
           />
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-gaming-dark via-gaming-dark/50 to-transparent" />
