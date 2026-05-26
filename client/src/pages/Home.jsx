@@ -158,7 +158,7 @@ export default function Home() {
               <RevealText text="ULTIMATE" />
             </span>
             <br />
-            <RevealText text="GAMING UNIVERSE." />
+            <RevealText text="VELTRIX UNIVERSE." />
           </h1>
 
           <motion.div 
@@ -171,7 +171,7 @@ export default function Home() {
             className="text-slate-400 text-lg md:text-xl mb-12 max-w-2xl mx-auto font-medium leading-relaxed"
           >
             {games.length > 0 ? games.length : '400'}+ curated games. One discovery platform.
-            Built for those who live and breathe gaming.
+            Built for those who live and breathe digital worlds.
           </motion.p>
 
           <motion.div 
