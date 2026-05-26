@@ -125,55 +125,54 @@ export default function GameDetail() {
 
   return (
     <div>
-      {/* Hero banner */}
-      <div className="detail-hero relative flex items-end pb-12 min-h-[55vh]"
-        style={{ marginTop: 'var(--nav-h)', backgroundColor: '#05050a' }}>
-        {/* Hero background: use Steam header image if available */}
+      {/* Hero Image - Full, uncropped, no overlay */}
+      <div className="detail-hero w-full bg-[#05050a]" style={{ marginTop: 'var(--nav-h)' }}>
         {(game.headerImage || steamData?.header_image) && (
           <img
             src={steamData?.header_image || game.headerImage}
             alt={game.title}
-            className="absolute inset-0 w-full h-full object-cover opacity-60"
+            className="w-full h-auto object-contain block mx-auto max-h-[60vh]"
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-gaming-dark via-gaming-dark/50 to-transparent" />
-        <div className="max-w-[1280px] mx-auto px-6 relative z-10 w-full">
-          <div className="detail-info">
-            {/* Badges */}
-            <div className="detail-info flex items-center gap-2 flex-wrap mb-4">
-              {(game.genres || [game.genre]).map(g => (
-                <Link key={g} to={`/games?genre=${g}`} className="badge badge-purple">{g}</Link>
-              ))}
-              <span className="badge badge-gray">{game.year}</span>
-              {game.priceType === 'Free' && <span className="badge badge-green">Free to Play</span>}
-            </div>
-            <h1 className="font-orbitron font-black mb-4" style={{ fontSize: 'clamp(2rem,5vw,3.5rem)' }}>{game.title}</h1>
-            <div className="flex items-center gap-4 flex-wrap text-sm text-slate-400 mb-4">
-              <span>By <strong className="text-slate-100">{game.developer}</strong></span>
-              <span>·</span><span>{game.publisher}</span>
-              <span>·</span><span className="text-amber-400">{stars}</span>
-              <span className="text-slate-600">{game.rating.toFixed(1)} / 5.0</span>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {(game.tags || []).map(t => <span key={t} className="tag">{t}</span>)}
-            </div>
+      </div>
 
-            {/* Favorite button */}
-            <div className="mt-5">
-              <motion.button
-                whileTap={{ scale: 0.92 }}
-                onClick={handleFavToggle}
-                disabled={favLoading}
-                className={`flex items-center gap-2 px-5 py-2.5 rounded-xl border font-bold text-sm transition-all duration-300 ${
-                  isFav
-                    ? 'bg-red-500/20 border-red-500/60 text-red-400 hover:bg-red-500/30'
-                    : 'bg-white/[0.04] border-white/10 text-slate-400 hover:bg-white/[0.08] hover:border-white/20'
-                }`}
-              >
-                <Heart size={16} className={isFav ? 'fill-red-400 text-red-400' : ''} />
-                {isFav ? 'Saved to Favorites' : 'Add to Favorites'}
-              </motion.button>
-            </div>
+      {/* Game Details Header (Below the image) */}
+      <div className="max-w-[1280px] mx-auto px-6 pt-10 pb-6 border-b border-white/[0.07] mb-12">
+        <div className="detail-info">
+          {/* Badges */}
+          <div className="flex items-center gap-2 flex-wrap mb-4">
+            {(game.genres || [game.genre]).map(g => (
+              <Link key={g} to={`/games?genre=${g}`} className="badge badge-purple">{g}</Link>
+            ))}
+            <span className="badge badge-gray">{game.year}</span>
+            {game.priceType === 'Free' && <span className="badge badge-green">Free to Play</span>}
+          </div>
+          <h1 className="font-orbitron font-black mb-4" style={{ fontSize: 'clamp(2rem,5vw,3.5rem)' }}>{game.title}</h1>
+          <div className="flex items-center gap-4 flex-wrap text-sm text-slate-400 mb-4">
+            <span>By <strong className="text-slate-100">{game.developer}</strong></span>
+            <span>·</span><span>{game.publisher}</span>
+            <span>·</span><span className="text-amber-400">{stars}</span>
+            <span className="text-slate-600">{game.rating.toFixed(1)} / 5.0</span>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {(game.tags || []).map(t => <span key={t} className="tag">{t}</span>)}
+          </div>
+
+          {/* Favorite button */}
+          <div className="mt-6">
+            <motion.button
+              whileTap={{ scale: 0.92 }}
+              onClick={handleFavToggle}
+              disabled={favLoading}
+              className={`flex items-center gap-2 px-5 py-2.5 rounded-xl border font-bold text-sm transition-all duration-300 ${
+                isFav
+                  ? 'bg-red-500/20 border-red-500/60 text-red-400 hover:bg-red-500/30'
+                  : 'bg-white/[0.04] border-white/10 text-slate-400 hover:bg-white/[0.08] hover:border-white/20'
+              }`}
+            >
+              <Heart size={16} className={isFav ? 'fill-red-400 text-red-400' : ''} />
+              {isFav ? 'Saved to Favorites' : 'Add to Favorites'}
+            </motion.button>
           </div>
         </div>
       </div>
