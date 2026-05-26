@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* ── CSS Variables (Vibe Coder's Specs) ──── */
+:root {
+  --bg:          #0D0D1A; /* Deep dark blue-black */
+  --bg2:         #0A0A0A;
+  --card:        #111827; /* Slightly lighter dark for cards */
+  --border:      rgba(255,255,255,0.08); /* Exact PDF 8% opacity border */
+  --border-p:    rgba(0,229,255,0.4);
+  --purple:      #7c3aed;
+  --cyan:        #00E5FF; /* Electric Cyan (Gamer Y2K Accent) */
+  --lime:        #AAFF00; /* Neon Lime Accent */
+  --text:        #F1F1EE; /* Pure white or near-white */
+  --text2:       #9ca3af;
+  --text3:       #6b7280;
+  --grad:        linear-gradient(135deg, #00E5FF, #7c3aed);
+  --nav-h:       64px;
+}
+
+/* ── Base resets ────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
+a { text-decoration: none; color: inherit; }
+
+/* ── Tailwind component layer ────────────────────────────────── */
+@layer components {
+  /* Gradient text */
+  .gradient-text {
+    background-image: var(--grad);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  /* Buttons (Dark Luxury Glow) */
+  .btn {
+    @apply inline-flex justify-center items-center gap-2 px-6 py-2.5 rounded-xl font-semibold text-sm cursor-pointer transition-all duration-300 border-0 no-underline;
+    font-family: 'Inter', sans-serif;
+    will-change: transform, box-shadow;
+  }
+  .btn-primary {
+    background-color: var(--cyan);
+    color: #000;
+    box-shadow: 0 0 30px rgba(0, 229, 255, 0.4);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 40px rgba(0, 229, 255, 0.6);
+  }
+  .btn-outline {
+    @apply bg-transparent border text-slate-300 hover:text-white transition-all;
+    border-color: var(--border);
+  }
+  .btn-outline:hover {
+    background-color: rgba(0, 229, 255, 0.1);
+    border-color: var(--cyan);
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
+  }
+  .btn-sm { @apply px-4 py-1.5 text-xs; }
+
+  /* Badges */
+  .badge { @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold; }
+  .badge-purple { @apply bg-brand-purple/20 text-brand-purple-dim border border-brand-purple/30; }
+  .badge-green  { @apply bg-green-500/15 text-green-400 border border-green-500/25; }
+  .badge-gray   { @apply bg-white/5 text-slate-400 border border-white/10; }
+  .badge-orange { @apply bg-orange-500/15 text-orange-400 border border-orange-500/25; }
+
+  /* Tag */
+  .tag { @apply inline-block px-2.5 py-0.5 bg-white/5 border border-white/10 rounded-full text-xs text-slate-400; }
+
+  /* Glass card (Bento Target) */
+  .glass-card { 
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    @apply rounded-2xl;
+    will-change: transform, opacity;
+  }
+
+  /* Section layouts */
+  .section-title { @apply font-orbitron text-xl font-bold; }
+  .section-head  { @apply flex items-center justify-between mb-8; }
+  .view-all      { @apply text-sm text-slate-400 hover:text-brand-cyan transition-colors; }
+  .page-hero {
+    @apply text-center;
+    padding: calc(var(--nav-h) + 3rem) 0 3rem;
+    background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(124,58,237,0.2), transparent);
+  }
+
+  /* Grid */
+  .grid-games {
+    @apply grid gap-5;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* Skeleton */
+  .skeleton {
+    @apply rounded;
+    background: linear-gradient(90deg, var(--card) 25%, rgba(124,58,237,.1) 50%, var(--card) 75%);
+    background-size: 800px 100%;
+    animation: shimmer 1.5s infinite linear;
+  }
+
+  /* CTA Banner */
+  .cta-banner {
+    @apply relative overflow-hidden rounded-3xl text-center;
+    background: linear-gradient(135deg, rgba(124,58,237,.25), rgba(6,182,212,.15));
+    border: 1px solid rgba(124,58,237,.3);
+    padding: 3.5rem;
+  }
+
+  /* Glass Panel */
+  .glass-panel {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+    @apply rounded-[24px] shadow-2xl;
+    will-change: transform, opacity;
+  }
+
+  /* Neon Border */
+  .neon-border-purple {
+    @apply border border-brand-purple/30 shadow-purple-glow;
+  }
+  .neon-border-cyan {
+    @apply border border-brand-cyan/30 shadow-cyan-glow;
+  }
+
+  /* Animated Gradient Border */
+  .grad-border {
+    position: relative;
+    padding: 1px;
+    background: linear-gradient(135deg, #7c3aed, #06b6d4);
+    border-radius: inherit;
+  }
+
+  .grad-border-inner {
+    @apply bg-gaming-dark rounded-[inherit] w-full h-full;
+  }
+
+  .text-glow-purple {
+    text-shadow: 0 0 15px rgba(124, 58, 237, 0.5);
+  }
+  .text-glow-cyan {
+    text-shadow: 0 0 15px rgba(6, 182, 212, 0.5);
+  }
+}
+
+/* ── Utilities layer ─────────────────────────────────────────── */
+@layer utilities {
+  .animate-float   { animation: float 3s ease-in-out infinite; }
+  .text-grad       { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+}
+
+/* ── Global keyframes ────────────────────────────────────────── */
+@keyframes float   { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);} }
+@keyframes shimmer { 0%{background-position:-400px 0;} 100%{background-position:400px 0;} }
+@keyframes fadeUp  { from{opacity:0;transform:translateY(40px);} to{opacity:1;transform:translateY(0);} }
+@keyframes cardSlideIn { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
+@keyframes neon-pulse {
+  0%,100%{box-shadow:0 0 12px rgba(124,58,237,.4);}
+  50%{box-shadow:0 0 32px rgba(124,58,237,.7),0 0 60px rgba(6,182,212,.2);}
+}
+
+/* Cards entrance animation — pure CSS, no GSAP opacity risk */
+.cards-enter > * {
+  opacity: 0;
+  animation: cardSlideIn 0.4s ease forwards;
+}
+.cards-enter > *:nth-child(1)  { animation-delay: 0.00s; }
+.cards-enter > *:nth-child(2)  { animation-delay: 0.04s; }
+.cards-enter > *:nth-child(3)  { animation-delay: 0.08s; }
+.cards-enter > *:nth-child(4)  { animation-delay: 0.12s; }
+.cards-enter > *:nth-child(5)  { animation-delay: 0.16s; }
+.cards-enter > *:nth-child(6)  { animation-delay: 0.20s; }
+.cards-enter > *:nth-child(7)  { animation-delay: 0.24s; }
+.cards-enter > *:nth-child(8)  { animation-delay: 0.28s; }
+.cards-enter > *:nth-child(9)  { animation-delay: 0.32s; }
+.cards-enter > *:nth-child(10) { animation-delay: 0.36s; }
+.cards-enter > *:nth-child(11) { animation-delay: 0.40s; }
+.cards-enter > *:nth-child(12) { animation-delay: 0.44s; }
+.cards-enter > *:nth-child(13) { animation-delay: 0.48s; }
+.cards-enter > *:nth-child(14) { animation-delay: 0.52s; }
+.cards-enter > *:nth-child(15) { animation-delay: 0.56s; }
+.cards-enter > *:nth-child(16) { animation-delay: 0.60s; }
+
+/* ── Swiper overrides ────────────────────────────────────────── */
+/* Force game cards inside Swiper to full opacity — GSAP ScrollTrigger
+   can't detect cards clipped by Swiper's overflow:hidden container */
+.swiper-slide .game-card {
+  opacity: 1 !important;
+  transform: translateY(0) scale(1) !important;
+  will-change: transform;
+}
+.swiper { padding-bottom: 2.5rem !important; }
+.swiper-pagination-bullet { background: rgba(255,255,255,.3) !important; }
+.swiper-pagination-bullet-active { background: var(--cyan) !important; box-shadow: 0 0 10px rgba(0,229,255,0.6) !important; }
+
+/* ── Utility Panels ─────────────────────────────────────────── */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border-radius: 24px;
+}
+
+/* ── Custom Swiper Navigation ─────────────────────────────────── */
+.swiper-prev-btn, .swiper-next-btn {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #fff;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.swiper-prev-btn:hover, .swiper-next-btn:hover {
+  background: rgba(0, 229, 255, 0.08);
+  border-color: rgba(0, 229, 255, 0.4);
+  color: var(--cyan);
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
+}
+
+.swiper-prev-btn.swiper-button-disabled, .swiper-next-btn.swiper-button-disabled {
+  opacity: 0.15;
+  cursor: not-allowed;
+  filter: grayscale(1);
+}
+
+.genre-img-container img {
+  filter: saturate(1.2) brightness(0.8);
+  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.group:hover .genre-img-container img {
+  filter: saturate(1.5) brightness(1);
+}
+.swiper-button-prev,
+.swiper-button-next {
+  width: 38px !important; height: 38px !important;
+  background: rgba(124,58,237,.35) !important; /* Increased opacity slightly to compensate for blur removal */
+  border-radius: 50% !important;
+  border: 1px solid rgba(124,58,237,.4) !important;
+  color: #fff !important; transition: .2s !important;
+}
+.swiper-button-prev::after,
+.swiper-button-next::after { font-size: .85rem !important; font-weight: 900 !important; }
+.swiper-button-prev:hover,
+.swiper-button-next:hover { background: rgba(124,58,237,.55) !important; }
+
+/* ── Scrollbar ───────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: rgba(0,229,255,.4); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0,229,255,.7); }
+
+/* ── Responsive grid ─────────────────────────────────────────── */
+@media(max-width:1100px){ .grid-games { grid-template-columns: repeat(3,1fr); } }
+@media(max-width:768px) { .grid-games { grid-template-columns: repeat(2,1fr); } }
+@media(max-width:500px) { .grid-games { grid-template-columns: 1fr; } }
+
+/* Custom Utilities */
+.crisp-image {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}

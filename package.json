@@ -1,0 +1,27 @@
+{
+    "version": "1.0.0",
+    "name": "gaming-hub",
+    "license": "ISC",
+    "description": "Gaming Hub - Full Stack PC Game Discovery Platform",
+    "scripts": {
+        "generate-data": "node scripts/generate-data.js",
+        "fetch-steam": "node scripts/fetch-steam-catalog.js",
+        "dev": "node server.js",
+        "start": "node server.js"
+    },
+    "dependencies": {
+        "@supabase/supabase-js": "^2.103.3",
+        "compression": "^1.7.5",
+        "cors": "^2.8.5",
+        "dotenv": "^16.6.1",
+        "express": "^4.21.2",
+        "express-rate-limit": "^7.5.0",
+        "node-fetch": "^2.7.0"
+    },
+    "keywords": [
+        "gaming",
+        "pc-games",
+        "steam"
+    ],
+    "main": "server.js"
+}
