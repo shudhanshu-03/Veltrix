@@ -75,7 +75,7 @@ export default function GameDetail() {
       const g = res?.data;
       if (!g) return;
       setGame(g);
-      document.title = `${g.title} — Gaming Hub`;
+      document.title = `${g.title} — Veltrix`;
 
       requestAnimationFrame(() => {
         gsap.from('.detail-hero', { opacity: 0, duration: .6, ease: 'power2.out' });

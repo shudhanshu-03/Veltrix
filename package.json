@@ -2,7 +2,7 @@
     "version": "1.0.0",
     "name": "gaming-hub",
     "license": "ISC",
-    "description": "Gaming Hub - Full Stack PC Game Discovery Platform",
+    "description": "Veltrix - Full Stack PC Game Discovery Platform",
     "scripts": {
         "generate-data": "node scripts/generate-data.js",
         "fetch-steam": "node scripts/fetch-steam-catalog.js",

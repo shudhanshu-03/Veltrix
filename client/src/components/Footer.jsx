@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="grid grid-cols-4 gap-10 mb-10">
           {/* Brand */}
           <div>
-            <div className="font-orbitron text-xl font-black gradient-text mb-4">🎮 Gaming Hub</div>
+            <div className="font-orbitron text-xl font-black gradient-text mb-4">🎮 Veltrix</div>
             <p className="text-slate-600 text-sm leading-7 max-w-[230px]">
               Your ultimate guide to the best PC games across every genre.
             </p>
@@ -47,7 +47,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-white/[0.07] pt-5 flex items-center justify-between text-xs text-slate-600">
-          <span>© 2024 Gaming Hub — Built with React + Node.js + Tailwind CSS</span>
+          <span>© 2024 Veltrix — Built with React + Node.js + Tailwind CSS</span>
           <span>74+ Games · 12 Genres · Live Steam Data</span>
         </div>
       </div>

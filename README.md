@@ -1,4 +1,4 @@
-# Gaming Hub
+# Veltrix
 
 A full-stack PC game discovery platform built with React, Vite, and Supabase. Browse games by genre, search the catalog, view Steam reviews and news, and explore detailed game pages.
 
@@ -21,7 +21,7 @@ A full-stack PC game discovery platform built with React, Vite, and Supabase. Br
 ## Project Structure
 
 ```
-gaming-hub/
+veltrix/
 ├── api/          # Vercel serverless API functions
 ├── client/       # React + Vite frontend
 │   ├── src/

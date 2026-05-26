@@ -44,7 +44,7 @@ export default function Login() {
 
         <div className="relative text-center">
           <div className="text-6xl mb-6 animate-float">🎮</div>
-          <h1 className="font-orbitron text-3xl font-black gradient-text mb-4">Gaming Hub</h1>
+          <h1 className="font-orbitron text-3xl font-black gradient-text mb-4">Veltrix</h1>
           <p className="text-slate-400 text-base leading-7 max-w-xs mb-8">
             Your ultimate destination for discovering the best PC games. Sign in to save favourites and personalise your experience.
           </p>
@@ -63,7 +63,7 @@ export default function Login() {
             {tab==='login'?'Welcome Back':'Create Account'}
           </h2>
           <p className="text-slate-600 text-sm mb-7">
-            {tab==='login'?'Sign in to your Gaming Hub account':'Join thousands of PC gamers'}
+            {tab==='login'?'Sign in to your Veltrix account':'Join thousands of PC gamers'}
           </p>
 
           {/* Tab switcher */}
@@ -115,7 +115,7 @@ export default function Login() {
             </button>
           </p>
           <div className="text-center mt-4">
-            <Link to="/" className="text-xs text-slate-600 hover:text-slate-400 transition-colors">← Back to Gaming Hub</Link>
+            <Link to="/" className="text-xs text-slate-600 hover:text-slate-400 transition-colors">← Back to Veltrix</Link>
           </div>
         </div>
       </div>

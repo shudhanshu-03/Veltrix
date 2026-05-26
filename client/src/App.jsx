@@ -30,7 +30,7 @@ export default function App() {
                   <div className="text-center py-32">
                     <div className="text-6xl mb-4">🕹️</div>
                     <h2 className="font-orbitron text-2xl mb-3">404 — Page Not Found</h2>
-                    <a href="/" className="text-brand-cyan hover:underline">← Back to Gaming Hub</a>
+                    <a href="/" className="text-brand-cyan hover:underline">← Back to Veltrix</a>
                   </div>
                 } />
               </Routes>
