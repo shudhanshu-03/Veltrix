@@ -8,7 +8,7 @@ export default function GenreCard({ genre, count = 0 }) {
       whileHover={{ y: -6, scale: 1.03 }}
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
     >
-      <Link to={`/games?genre=${genre.name}`} target="_blank" rel="noopener noreferrer" className="block no-underline group">
+      <Link to={`/games?genre=${genre.name}`} className="block no-underline group">
         <div
           className="relative overflow-hidden cursor-pointer"
           style={{
