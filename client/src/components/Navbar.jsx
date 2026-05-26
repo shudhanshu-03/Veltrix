@@ -56,7 +56,7 @@ export default function Navbar() {
             >
               <Gamepad2 size={28} className="text-brand-cyan" />
             </motion.span> 
-            <span className="tracking-tighter">GAMING <span className="text-white">HUB</span></span>
+            <span className="tracking-tighter">VEL<span className="text-white">TRIX</span></span>
           </Link>
 
           {/* Desktop nav links */}
