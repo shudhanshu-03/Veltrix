@@ -1,6 +1,4 @@
-const { games } = require('../../../_lib/data');
-
-const STEAM_STORE = 'https://store.steampowered.com/api';
+const { games } = require('../../../_lib/data.cjs');
 
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Credentials', true);
@@ -12,9 +10,9 @@ module.exports = async (req, res) => {
 
   try {
     const json = await fetch(
-      `${STEAM_STORE}/appdetails?appids=${steamId}&cc=us&filters=price_overview`
+      `https://store.steampowered.com/appreviews/${steamId}?json=1&language=en&review_type=positive&num_per_page=5`
     ).then(r => r.json());
-    res.json({ success: true, data: json[steamId]?.data || {} });
+    res.json({ success: true, data: json });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }

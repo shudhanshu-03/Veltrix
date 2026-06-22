@@ -1,4 +1,4 @@
-const { GENRES } = require('../_lib/data');
+const { GENRES } = require('../_lib/data.cjs');
 
 module.exports = (req, res) => {
   res.setHeader('Access-Control-Allow-Credentials', true);

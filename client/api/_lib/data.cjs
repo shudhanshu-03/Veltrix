@@ -1,4 +1,4 @@
-const games = require('./gamesData.js');
+const games = require('./gamesData.cjs');
 
 const GENRES = [
   { id:'action',     name:'Action',     icon:'⚔️',  gradient:'linear-gradient(135deg,#e53935,#b71c1c)',  desc:'Fast-paced combat and explosions.' },

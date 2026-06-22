@@ -1,4 +1,4 @@
-const { queryGames } = require('../_lib/data');
+const { queryGames } = require('../_lib/data.cjs');
 
 module.exports = (req, res) => {
   // Add CORS headers for good measure

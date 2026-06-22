@@ -15,7 +15,7 @@ const db   = require('./database');
 const fs   = require('fs');
 const path = require('path');
 
-const gamesPath = path.join(__dirname, '..', 'client', 'api', '_lib', 'gamesData.js');
+const gamesPath = path.join(__dirname, '..', 'client', 'api', '_lib', 'gamesData.cjs');
 
 if (!fs.existsSync(gamesPath)) {
   console.error('❌  gamesData.js not found.');
