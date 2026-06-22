@@ -137,7 +137,7 @@ export default function GameDetail() {
       </div>
 
       {/* Game Details Header (Below the image) */}
-      <div className="max-w-[1280px] mx-auto px-6 pt-10 pb-6 border-b border-white/[0.07] mb-12">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 pt-10 pb-6 border-b border-white/[0.07] mb-12">
         <div className="detail-info">
           {/* Badges */}
           <div className="flex items-center gap-2 flex-wrap mb-4">
@@ -178,8 +178,8 @@ export default function GameDetail() {
       </div>
 
       {/* Body */}
-      <div className="max-w-[1280px] mx-auto px-6">
-        <div className="detail-body grid gap-10 py-12" style={{ gridTemplateColumns: '1fr 340px' }}>
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
+        <div className="detail-body grid gap-10 py-12 grid-cols-1 lg:grid-cols-[1fr_340px]">
 
           {/* Main content */}
           <div>
@@ -191,7 +191,7 @@ export default function GameDetail() {
             {screenshots.length > 0 && (
               <>
                 <h3 className="font-orbitron text-sm text-[#ff8c42] uppercase tracking-widest mb-4">Screenshots</h3>
-                <div className="grid grid-cols-2 gap-3 mb-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">
                   {screenshots.map((ss, i) => (
                     <a key={i} href={ss.path_full} target="_blank" rel="noopener">
                       <img
@@ -208,7 +208,7 @@ export default function GameDetail() {
             {/* System Requirements */}
             <h3 className="font-orbitron text-sm text-[#ff8c42] uppercase tracking-widest mb-4">System Requirements</h3>
             {hasReqs ? (
-              <div className="grid grid-cols-2 gap-4 mb-10">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
                 <SysReqBlock label="⚡ MINIMUM" items={minReq} />
                 <SysReqBlock label="🚀 RECOMMENDED" items={recReq} />
               </div>
@@ -292,9 +292,9 @@ export default function GameDetail() {
 
       {/* Steam News */}
       {news.length > 0 && (
-        <div className="max-w-[1280px] mx-auto px-6 pb-12">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 pb-12">
           <h3 className="font-orbitron text-sm text-[#ff8c42] uppercase tracking-widest mb-5">📰 Latest Steam News</h3>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {news.map((item, i) => (
               <a key={i} href={item.url} target="_blank" rel="noopener"
                 className="block bg-[#0f0f1a] border border-white/[0.07] rounded-xl p-4 hover:border-[rgba(255,85,0,0.4)]/50 transition-colors no-underline">

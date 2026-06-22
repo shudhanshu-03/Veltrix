@@ -59,6 +59,12 @@ export default function Navbar() {
     return () => clearTimeout(timer);
   }, [query]);
 
+  useEffect(() => {
+    if (mobileOpen) document.body.style.overflow = 'hidden';
+    else document.body.style.overflow = 'unset';
+    return () => { document.body.style.overflow = 'unset'; };
+  }, [mobileOpen]);
+
   const go = (id) => { setQuery(''); setResults([]); navigate(`/game/${id}`); };
 
   return (
@@ -188,6 +194,34 @@ export default function Navbar() {
             className="fixed inset-0 z-[999] flex flex-col items-center justify-center gap-8 backdrop-blur-2xl"
             style={{ background: 'rgba(5,5,10,0.97)' }}
           >
+            {/* Mobile Search */}
+            <div className="relative w-64 mb-4">
+              <div className="flex items-center gap-2 bg-white/[0.05] border border-white/10 rounded-xl px-4 py-3 focus-within:border-[var(--orange)] transition-colors">
+                <Search size={18} className="text-slate-400" />
+                <input
+                  value={query}
+                  onChange={e => setQuery(e.target.value)}
+                  placeholder="Search games..."
+                  className="bg-transparent border-none outline-none text-white text-base w-full placeholder:text-slate-500 font-medium"
+                />
+              </div>
+              {results.length > 0 && (
+                <div className="absolute top-full left-0 right-0 mt-2 bg-[var(--card)] border border-white/10 rounded-xl overflow-hidden shadow-2xl max-h-[40vh] overflow-y-auto">
+                  {results.map(g => (
+                     <div key={g.id} onClick={() => { go(g.id); setMO(false); }}
+                        className="flex items-center gap-3 px-4 py-3 cursor-pointer border-b border-white/[0.04] active:bg-white/[0.1] transition-colors last:border-b-0"
+                      >
+                        <span className="text-2xl">{g.icon}</span>
+                        <div className="text-left">
+                          <div className="text-sm font-bold text-slate-100">{g.title}</div>
+                          <div className="text-[10px] text-slate-400 uppercase tracking-wider">{g.genre}</div>
+                        </div>
+                      </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
             {['Home', 'Games', 'Genres', 'Profile'].map((label) => {
               const to = label === 'Home' ? '/' : `/${label.toLowerCase()}`;
               return (

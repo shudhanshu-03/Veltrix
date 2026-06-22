@@ -55,11 +55,11 @@ export default function Games() {
         <p className="text-slate-400 max-w-lg mx-auto">74+ games across 12 genres. Filter, sort, and find your next obsession.</p>
       </div>
 
-      <div className="max-w-[1280px] mx-auto px-6 py-12">
-        <div className="grid gap-8" style={{ gridTemplateColumns:'260px 1fr' }}>
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 py-12">
+        <div className="grid gap-8 grid-cols-1 lg:grid-cols-[260px_1fr]">
 
           {/* ── Sidebar ────────────────────────────── */}
-          <aside className="border rounded-xl p-6 self-start sticky top-20" style={{ background: 'var(--card)', borderColor: 'var(--border)', borderRadius: 'var(--r-lg)' }}>
+          <aside className="border rounded-xl p-6 self-start lg:sticky lg:top-20" style={{ background: 'var(--card)', borderColor: 'var(--border)', borderRadius: 'var(--r-lg)' }}>
             <div className="flex items-center justify-between font-orbitron text-sm mb-6">
               Filters
               <button onClick={() => { setGenres([]); setPrice('all'); setQuery(''); setPage(1); }}
