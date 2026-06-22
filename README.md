@@ -1,64 +1,88 @@
-# Veltrix
+# Veltrix 🎮
 
-A full-stack PC game discovery platform built with React and Vite, powered by a self-contained local SQLite and Express.js backend. Browse games by genre, search the catalog, view Steam reviews and news, and explore detailed game pages.
+Veltrix is a high-performance, full-stack PC game discovery platform. It features a modern, fully responsive dark-mode UI, live real-time integrations with the Steam API, and an extremely resilient dual-architecture deployment model (Local SQLite for development, Static JSON Serverless for Vercel).
 
-## Tech Stack
+## 🌟 Key Features
 
-- **Frontend** — React 19, Vite, React Router, Framer Motion, GSAP, Three.js
-- **Backend** — Node.js, Express
-- **Database** — SQLite (`better-sqlite3`)
-- **Authentication** — Hand-coded JWT + bcrypt
+- **Massive Catalog**: Browse 398+ PC games across 12 unique genres.
+- **Advanced Filtering**: Filter by genre, sort by rating/newest, and search instantly.
+- **Live Steam Integration**: Real-time server-side proxy fetching Steam reviews, pricing, and breaking news.
+- **Fully Responsive**: Flawless grid and mobile menu experience across phones, tablets, and desktop.
+- **Custom Authentication**: Fast, hand-coded JWT authentication system for favoriting games.
+- **Dual Architecture**: Runs on local SQLite (`veltrix.db`) during development, and automatically compiles down to a lightning-fast static JSON file for zero-latency, scale-to-infinity Vercel Serverless deployments.
 
-## Features
+## 🛠 Tech Stack
 
-- Browse and filter games by genre, price, and rating
-- Full-text search across the game catalog
-- Local JSON/SQLite integration (no cloud dependencies required)
-- Custom authentication flow (Sign Up, Log In, Favorites) completely stored locally
-- Steam API proxy — live reviews, news, and pricing fetched server-side
-- Responsive dark UI with scroll-linked animations
+- **Frontend:** React 19, Vite, Tailwind CSS, React Router, Framer Motion, GSAP, Swiper
+- **Backend / Deployment:** Vercel Serverless Functions (`@vercel/node`), Express.js (for local dev)
+- **Data Layer:** SQLite (`better-sqlite3`) for local, pre-compiled static `.cjs` modules for production.
 
-## Project Structure
+## 🚀 Local Development Setup
 
-```
-veltrix/
-├── client/       # React + Vite frontend
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   └── services/
-│   └── public/
-├── db/           # SQLite database schema and seed scripts
-├── data/         # Raw JSON datasets
-├── server.js     # Express server API endpoints and logic
-└── veltrix.db    # (Generated) Local SQLite database file
-```
+Veltrix has two separate `package.json` configurations to cleanly separate the backend tools from the React frontend.
 
-## Local Development
-
+### 1. Install Dependencies
 ```bash
-# 1. Install root dependencies (Express, SQLite, etc.)
+# Install backend/server dependencies
 npm install
 
-# 2. Install client dependencies
-cd client && npm install
+# Install frontend dependencies
+cd client
+npm install
+```
 
-# 3. Seed the local SQLite database from data/games.json
+### 2. Prepare the Local Database
+We need to generate the local SQLite database from the raw data files.
+```bash
+# From the root directory
 npm run seed
+```
 
-# 4. Start Express API server (runs on port 3000)
+### 3. Run the Development Servers
+You will need to run the API server and the React dev server simultaneously.
+
+```bash
+# Terminal 1: Start the Express API (Runs on port 3000)
+# From the root directory:
 npm run dev
 
-# 5. In a separate terminal, start the React dev server
-cd client && npm run dev
+# Terminal 2: Start the Vite React Frontend (Runs on port 5173)
+# From the /client directory:
+npm run dev
 ```
 
-## Environment Variables
-
-Copy `.env.example` to `.env` and fill in:
-
-```
+### 4. Environment Variables
+Copy `.env.example` to `.env` in the root folder and fill in the values:
+```env
 PORT=3000
-JWT_SECRET=your_jwt_secret
-STEAM_API_KEY=your_steam_api_key  # optional, but recommended for Steam API limits
+JWT_SECRET=your_jwt_secret_here
+STEAM_API_KEY=your_steam_api_key_here
 ```
+
+## ☁️ Production Deployment (Vercel)
+
+Veltrix is specifically engineered to deploy flawlessly on Vercel's Hobby plan. Because Vercel's Hobby tier restricts database connections and caps Serverless Functions at 12, Veltrix automatically bypasses this.
+
+1. Connect your GitHub repository to Vercel.
+2. The `client/vercel.json` configuration file will automatically override your dashboard settings.
+3. The data layer uses a compiled `gamesData.cjs` module, meaning there is **no database required** in production. It cannot go to sleep, cannot be paused, and responds in 0ms.
+
+## 📂 Project Structure
+
+```text
+veltrix/
+├── client/                 # React frontend & Vercel deployment root
+│   ├── api/                # Vercel Serverless Functions
+│   │   ├── _lib/           # Production JSON data (gamesData.cjs)
+│   │   ├── games/          # Game data endpoints
+│   │   └── steam/          # Live Steam API proxy endpoints
+│   ├── src/                # React source code (Pages, Components)
+│   └── vercel.json         # Critical routing & build rules
+├── data/                   # Raw JSON catalogs
+├── db/                     # SQLite schema and seeder
+├── scripts/                # Data generation and fetching utilities
+└── server.js               # Local Express.js entry point
+```
+
+## 📜 License
+ISC

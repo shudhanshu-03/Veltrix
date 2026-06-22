@@ -23,7 +23,6 @@
     }
   ],
   "routes": [
-    { "src": "/api/debug", "dest": "/api/debug.cjs" },
     { "src": "/api/games", "dest": "/api/games.cjs" },
     { "src": "/api/games/([^/]+)", "dest": "/api/games/[id].cjs?id=$1" },
     { "src": "/api/genres", "dest": "/api/genres.cjs" },
