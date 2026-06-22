@@ -54,3 +54,8 @@ upload-games-fresh.js
 
 # ── Heavy Image Sequence (used locally for scroll animation) ──────────────────
 client/public/Img Seq/
+
+# ── Database ──────────────────────────────────────────────────────────────────
+*.db
+*.db-shm
+*.db-wal

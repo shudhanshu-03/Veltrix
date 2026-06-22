@@ -38,7 +38,7 @@ export default function Navbar() {
   const isLoggedIn = !!user; 
 
   useEffect(() => {
-    const { data: authListener } = onAuthStateChange((event, session) => {
+    const { data: { subscription } } = onAuthStateChange((event, session) => {
       setUser(session?.user || null);
     });
     
@@ -46,7 +46,7 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      if (authListener?.subscription) authListener.subscription.unsubscribe();
+      subscription?.unsubscribe();
     }
   }, []);
 

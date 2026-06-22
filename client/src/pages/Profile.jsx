@@ -141,24 +141,24 @@ export default function Profile() {
     const fetchProfileAndFavorites = async () => {
       try {
         const session = await getCurrentSession();
-        if(!session) {
+        if (!session) {
           navigate('/login');
           return;
         }
 
-        const email = session.user.email;
-        const name = session.user.user_metadata?.display_name || email.split('@')[0];
-        
+        const { user } = session;
+        const name   = user.user_metadata?.display_name || user.email.split('@')[0];
+
         setUser({
-          name: name,
-          email: email,
-          joined: new Date(session.user.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long' }),
-          avatar: session.user.user_metadata?.avatar_url || null,
-          level: 1,
-          xp: 0,
+          name,
+          email:  user.email,
+          joined: new Date(user.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long' }),
+          avatar: user.user_metadata?.avatar_url || null,
+          level:  1,
+          xp:     0,
         });
 
-        // Load real favorites from Supabase
+        // Load favorites from localStorage via mock auth service
         const favIds = await getFavorites();
         if (favIds.length > 0) {
           const gameDetails = await Promise.all(
