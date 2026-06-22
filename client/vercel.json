@@ -19,16 +19,18 @@
     }
   ],
   "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
-    },
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
+    { "src": "/api/games", "dest": "/api/games.js" },
+    { "src": "/api/games/([^/]+)", "dest": "/api/games/[id].js?id=$1" },
+    { "src": "/api/genres", "dest": "/api/genres.js" },
+    { "src": "/api/search", "dest": "/api/search.js" },
+    { "src": "/api/stats", "dest": "/api/stats.js" },
+    { "src": "/api/steam/catalog", "dest": "/api/steam/catalog.js" },
+    { "src": "/api/steam/featured", "dest": "/api/steam/featured.js" },
+    { "src": "/api/steam/game/([^/]+)", "dest": "/api/steam/game/[gameId].js?gameId=$1" },
+    { "src": "/api/steam/news/([^/]+)", "dest": "/api/steam/news/[gameId].js?gameId=$1" },
+    { "src": "/api/steam/price/([^/]+)", "dest": "/api/steam/price/[gameId].js?gameId=$1" },
+    { "src": "/api/steam/reviews/([^/]+)", "dest": "/api/steam/reviews/[gameId].js?gameId=$1" },
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
