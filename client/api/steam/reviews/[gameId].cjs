@@ -1,4 +1,4 @@
-const { games } = require('../../../_lib/data.cjs');
+const { games } = require('../../_lib/data.cjs');
 
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Credentials', true);

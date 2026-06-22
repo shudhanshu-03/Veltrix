@@ -1,4 +1,4 @@
-const { queryGames } = require('../_lib/data.cjs');
+const { queryGames } = require('./_lib/data.cjs');
 
 module.exports = (req, res) => {
   res.setHeader('Access-Control-Allow-Credentials', true);

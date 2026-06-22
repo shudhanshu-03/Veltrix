@@ -1,4 +1,4 @@
-const { games } = require('../../../_lib/data.cjs');
+const { games } = require('../../_lib/data.cjs');
 
 const STEAM_WEB = 'https://api.steampowered.com';
 

@@ -1,4 +1,4 @@
-const { games } = require('../../../_lib/data.cjs');
+const { games } = require('../../_lib/data.cjs');
 
 const STEAM_STORE = 'https://store.steampowered.com/api';
 
