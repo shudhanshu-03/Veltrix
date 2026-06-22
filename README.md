@@ -55,17 +55,17 @@ npm run dev
 Copy `.env.example` to `.env` in the root folder and fill in the values:
 ```env
 PORT=3000
-JWT_SECRET=your_jwt_secret_here
-STEAM_API_KEY=your_steam_api_key_here
+JWT_SECRET=any_random_secure_string_here  # Used to sign auth tokens
+STEAM_API_KEY=your_steam_api_key_here     # (Optional)
 ```
 
 ## ☁️ Production Deployment (Vercel)
 
-Veltrix is specifically engineered to deploy flawlessly on Vercel's Hobby plan. Because Vercel's Hobby tier restricts database connections and caps Serverless Functions at 12, Veltrix automatically bypasses this.
+Veltrix is designed for high-performance, zero-maintenance edge deployment on Vercel.
 
 1. Connect your GitHub repository to Vercel.
-2. The `client/vercel.json` configuration file will automatically override your dashboard settings.
-3. The data layer uses a compiled `gamesData.cjs` module, meaning there is **no database required** in production. It cannot go to sleep, cannot be paused, and responds in 0ms.
+2. The `client/vercel.json` configuration file automatically handles all API routing.
+3. The data layer utilizes a compiled `gamesData.cjs` module. Because the data is bundled directly into the serverless functions, there is **no external database connection required** in production. This guarantees 100% uptime and lightning-fast data retrieval.
 
 ## 📂 Project Structure
 
