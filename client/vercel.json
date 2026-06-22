@@ -6,7 +6,19 @@
       "use": "@vercel/static-build"
     },
     {
-      "src": "api/**/*.cjs",
+      "src": "api/*.cjs",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "api/games/*.cjs",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "api/steam/*.cjs",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "api/steam/*/*.cjs",
       "use": "@vercel/node"
     }
   ],
