@@ -15,15 +15,14 @@ const db   = require('./database');
 const fs   = require('fs');
 const path = require('path');
 
-const gamesPath = path.join(__dirname, '..', 'client', 'api', 'data', 'games.json');
+const gamesPath = path.join(__dirname, '..', 'client', 'api', '_lib', 'gamesData.js');
 
 if (!fs.existsSync(gamesPath)) {
-  console.error('❌  data/games.json not found.');
-  console.error('    Run  npm run fetch-steam  first, then re-seed.');
+  console.error('❌  gamesData.js not found.');
   process.exit(1);
 }
 
-const games = JSON.parse(fs.readFileSync(gamesPath, 'utf8'));
+const games = require(gamesPath);
 console.log(`📦  Read ${games.length} games from data/games.json`);
 
 // ── Prepared statement ─────────────────────────────────────────────────────────
