@@ -15,7 +15,7 @@ const db   = require('./database');
 const fs   = require('fs');
 const path = require('path');
 
-const gamesPath = path.join(__dirname, '..', 'data', 'games.json');
+const gamesPath = path.join(__dirname, '..', 'client', 'data', 'games.json');
 
 if (!fs.existsSync(gamesPath)) {
   console.error('❌  data/games.json not found.');

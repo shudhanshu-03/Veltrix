@@ -1,4 +1,4 @@
-const games = require('../../../data/games.json');
+const games = require('../../data/games.json');
 
 const GENRES = [
   { id:'action',     name:'Action',     icon:'⚔️',  gradient:'linear-gradient(135deg,#e53935,#b71c1c)',  desc:'Fast-paced combat and explosions.' },

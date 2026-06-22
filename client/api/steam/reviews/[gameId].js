@@ -1,4 +1,3 @@
-const fetch = require('node-fetch');
 const { games } = require('../../../_lib/data');
 
 module.exports = async (req, res) => {
